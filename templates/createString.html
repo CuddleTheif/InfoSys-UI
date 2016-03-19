@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>InfoSys - Edit Image</title>
+    <style>
+     	fieldset{display:inline;}
+    </style>
+    <meta charset="utf-8">
+</head>
+<body>
+	<p> Create String '{{ name }}' </p>
+	<p> Text: <ol>{% for text in texts %}<li>{{ text }}</li>{% endfor %}</ol> </p>
+	<p> Modes: <ol>{% for mode in modes %}<li>{{ mode }}</li>{% endfor %}</ol> </p>
+	<form action="string" method="POST">
+		String: <br />
+		<input name="string" value="Enter String Here..."><br />
+		<input type="submit" value="Submit">
+	</form><br />
+    
+</body>
+</html>

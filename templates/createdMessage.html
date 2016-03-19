@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>InfoSys - Edit Image</title>
+    <style>
+     	fieldset{display:inline;}
+    </style>
+    <meta charset="utf-8">
+</head>
+<body>
+	<p> Your Text was created! Key: {{ key }} (KEEP THIS KEY INCASE YOU NEED TO DELETE THIS MESSAGE MANUALLY) </p>
+	<p> Text: <ol>{% for text in texts %}<li>{{ text }}</li>{% endfor %}</ol> </p>
+	<p> Modes: <ol>{% for mode in modes %}<li>{{ mode }}</li>{% endfor %}</ol> </p>
+	<button onclick='if(confirm("Are you sure you want to create a new message? It will delete your old message!"))window.location.href = "/clear";'>New Message</button><br />
+	<button onclick='window.location.href = "/delete";'>Delete Key Page</button><br />
+	<button onclick='window.location.href = "/reload";'>Reload Server</button>
+    
+</body>
+</html>

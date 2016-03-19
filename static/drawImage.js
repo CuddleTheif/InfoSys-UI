@@ -1,5 +1,15 @@
 var imageWidth = 80, imageHeight = 7, imageData = [''], pixelSize = 10, imageSettings, mouseDown = false;
 
+// Check if new sizes are vaild
+function validateForm(){
+	if(imageSettings.elements.namedItem("width").value<1 || imageSettings.elements.namedItem("width").value>255 || imageSettings.elements.namedItem("height").value<1 || imageSettings.elements.namedItem("height").value>31){
+		alert('Error! Height and Width must be integers within their respective ranges!');
+		return false;
+	}
+	if(!confirm('Are you sure you want to change the size? It will erase your current image!'))
+		return false;
+}
+
 // Send the image as a POST to the server for handling
 function sendImage(){
 	// Create form for sending POST
@@ -21,21 +31,11 @@ function sendImage(){
 	image.setAttribute('name', "image");
 	image.setAttribute('value', imageData);
 	image.setAttribute('type', "hidden");
-	var space = document.createElement("input");
-	space.setAttribute('name', "space");
-	space.setAttribute('value', imageSettings.elements.namedItem("space").value);
-	space.setAttribute('type', "hidden");
-	var key = document.createElement("input");
-	key.setAttribute('name', "key");
-	key.setAttribute('value', imageSettings.elements.namedItem("key").value);
-	key.setAttribute('type', "hidden");
 	
 	// Add all inputs to the form and send
 	form.appendChild(width);
 	form.appendChild(height);
 	form.appendChild(image);
-	form.appendChild(space);
-	form.appendChild(key);
 	document.body.appendChild(form);
 	form.submit();
 }
@@ -112,7 +112,7 @@ function getPixelColor(x,y){
 		case '5':
 			return "#C20000";
 		case '6':
-			return "#C20000";
+			return "#00C200";
 		case '7':
 			return "#A52A2A";
 		case '8':
